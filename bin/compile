@@ -41,6 +41,9 @@ BUILDPACK_VERSION=v28
 # Setup pip-pop (pip-diff)
 export PATH=$PATH:$ROOT_DIR/vendor/pip-pop
 
+# Setup peep
+export PATH=$PATH:$ROOT_DIR/vendor/peep.py
+
 # Support Anvil Build_IDs
 [ ! "$SLUG_ID" ] && SLUG_ID="defaultslug"
 [ ! "$REQUEST_ID" ] && REQUEST_ID=$SLUG_ID
@@ -166,8 +169,8 @@ source $BIN_DIR/steps/pylibmc
 # Libffi support.
 source $BIN_DIR/steps/cryptography
 
-# Install dependencies with Pip.
-source $BIN_DIR/steps/pip-install
+# Install dependencies with Peep.
+source $BIN_DIR/steps/peep-install
 
 # Django collectstatic support.
 sub-env $BIN_DIR/steps/collectstatic
